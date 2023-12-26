@@ -1,24 +1,26 @@
+import { Link, BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useState } from 'react';
+import Login from './screens/login/login.js';
+import MainMenu from './screens/mainMenu/mainMenu.js';
+import CustomerDashboard from './screens/customerDashboard/customerDashboard.js';
+
+import { UserContextProvider } from './contexts/userContext.js';
+
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
+  const [user, setUser] = useState(true);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <UserContextProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<MainMenu />} />
+          <Route path='/login' element={<Login />} />
+          <Route path='/customerDashboard' element={<CustomerDashboard />} />
+        </Routes>
+      </BrowserRouter>
+    </UserContextProvider>
   );
 }
 
