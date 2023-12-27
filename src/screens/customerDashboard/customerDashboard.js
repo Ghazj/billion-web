@@ -1,10 +1,26 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import useUser from '../../hooks/useUser';
 import { useEffect } from 'react';
+import Chart1 from '../../components/charts/chart1';
+
+import './customerDashboard.css'
 
 function CustomerDashboard() {
     const { isLogged, logout } = useUser();
     const navigate = useNavigate();
+
+    const initialData = [
+        { time: '2018-12-22', value: 90.51 },
+        { time: '2018-12-23', value: 31.11 },
+        { time: '2018-12-24', value: 27.02 },
+        { time: '2018-12-25', value: 27.32 },
+        { time: '2018-12-26', value: 25.17 },
+        { time: '2018-12-27', value: 28.89 },
+        { time: '2018-12-28', value: 25.46 },
+        { time: '2018-12-29', value: 23.92 },
+        { time: '2018-12-30', value: 22.68 },
+        { time: '2018-12-31', value: 4.67 },
+    ];
 
     useEffect(() => {
         console.log('Login isLogged: ', isLogged)
@@ -19,11 +35,15 @@ function CustomerDashboard() {
     }
 
     return (
-        <div >
+        <div className='customerDashboard'>
+            <header>
+                <h1>Welcome, </h1>
+            </header>
             <h1>
                 Customer Dashboard
             </h1>
             <button className='mainMenu' onClick={handleClick}>Cerrar sesión</button>
+            <Chart1 data={initialData}/>
         </div>
     )
 }
