@@ -8,7 +8,7 @@ function Login() {
   const navigate = useNavigate();
   const [userState, setuserState] = useState('')
   const [passwordState, setPasswordState] = useState('')
-  const {isLogged, login} = useUser();
+  const {isLogged, login, jwt} = useUser();
 
   const regularExpressions = {
     user: /^[a-zA-Z0-9\\]{4,16}$/, // Letras, numeros, guion y guion_bajo
@@ -22,16 +22,14 @@ function Login() {
   }
 
   useEffect(() => {
-    console.log('Login isLogged: ', isLogged)
     if (isLogged === true) navigate('/customerDashboard');
   }, [isLogged, navigate])
 
   const handleSubmit = (e) => {
-    console.log('Login isLogged: ', isLogged)
     e.preventDefault();
     console.log(userState, passwordState);
-    login({ userState, passwordState });
-    console.log('Login isLogged: ', isLogged)
+    login(userState, passwordState);
+    console.log("Token: ", jwt);
   }
 
   return (

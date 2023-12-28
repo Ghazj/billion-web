@@ -2,12 +2,18 @@ import { useNavigate } from 'react-router-dom'
 import useUser from '../../hooks/useUser';
 import { useEffect } from 'react';
 import Chart1 from '../../components/charts/chart1';
+import { Employee } from '../../services/Employee';
 
 import './customerDashboard.css'
 
 function CustomerDashboard() {
-    const { isLogged, logout } = useUser();
+    const { isLogged, logout, jwt} = useUser();
     const navigate = useNavigate();
+    
+    const fetchEmployee = async (token) =>{
+        const res = await Employee(token);
+        console.log(res);
+    }
 
     const initialData = [
         { time: '2018-12-22', value: 90.51 },
@@ -23,15 +29,17 @@ function CustomerDashboard() {
     ];
 
     useEffect(() => {
-        console.log('Login isLogged: ', isLogged)
         if (isLogged === false) navigate('/')
     }, [isLogged, navigate])
 
     const handleClick = (e) => {
-        console.log('Login isLogged: ', isLogged)
         e.preventDefault();
         logout();
-        console.log('Login isLogged: ', isLogged)
+    }
+
+    const handleClickEmployee = (e) => {
+        e.preventDefault();
+        fetchEmployee(jwt);
     }
 
     return (
@@ -44,6 +52,7 @@ function CustomerDashboard() {
             </h1>
             <button className='mainMenu' onClick={handleClick}>Cerrar sesión</button>
             <Chart1 data={initialData}/>
+            <button className='fetch' onClick={handleClickEmployee}>Consultar Employee</button>
         </div>
     )
 }

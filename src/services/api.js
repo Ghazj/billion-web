@@ -3,7 +3,8 @@ import { create } from 'apisauce';
 const api = create({
     baseURL: 'http://localhost:3000/',
     headers: {
-        Accept: 'application/vnd.github.v3+json'
+        "Accept": "application/jason",
+        "Content-Type": "application/json"
     }
 })
 
