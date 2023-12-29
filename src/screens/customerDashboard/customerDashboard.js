@@ -7,10 +7,10 @@ import { Employee } from '../../services/Employee';
 import './customerDashboard.css'
 
 function CustomerDashboard() {
-    const { isLogged, logout, jwt} = useUser();
+    const { isLogged, logout, jwt, verifyToken} = useUser();
     const navigate = useNavigate();
-    
-    const fetchEmployee = async (token) =>{
+
+    const fetchEmployee = async (token) => {
         const res = await Employee(token);
         console.log(res);
     }
@@ -42,6 +42,23 @@ function CustomerDashboard() {
         fetchEmployee(jwt);
     }
 
+    const handleClickGetToken = (e) => {
+        console.log(jwt);
+        alert('El token actual de la sesisón es: ' + jwt)
+    }
+
+    const handleClickGetAuth = async (e) => {
+        e.preventDefault();
+        const header = {
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "*/*",
+                "token": jwt
+            }
+        }
+        console.log(await verifyToken(header));
+    }
+
     return (
         <div className='customerDashboard'>
             <header>
@@ -51,8 +68,10 @@ function CustomerDashboard() {
                 Customer Dashboard
             </h1>
             <button className='mainMenu' onClick={handleClick}>Cerrar sesión</button>
-            <Chart1 data={initialData}/>
+            <Chart1 data={initialData} />
             <button className='fetch' onClick={handleClickEmployee}>Consultar Employee</button>
+            <button className='token' onClick={handleClickGetToken}>Consultar JWT</button>
+            <button className='token' onClick={handleClickGetAuth}>Consultar auth usuario</button>
         </div>
     )
 }

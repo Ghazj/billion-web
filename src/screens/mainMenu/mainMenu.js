@@ -9,6 +9,9 @@ function MainMenu() {
             <Link to='/login'>
                 <button className='loggingButton'>Login</button>
             </Link>
+            <Link to='/sign-in'>
+                <button className='signInButton'>Crear cuenta</button>
+            </Link>
         </div>
     )
 }

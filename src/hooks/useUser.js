@@ -1,32 +1,41 @@
 import { useContext, useCallback } from 'react';
+import { signInApi } from '../services/signIn';
+import { loginApi } from '../services/login';
+import { verifyTokenApi } from '../services/verifyToken';
+
 import Context from '../contexts/userContext';
 
-function useUser (){
-    const {jwt, setJWT} = useContext(Context);
+function useUser() {
+    const { jwt, setJWT } = useContext(Context);
 
-    const login = useCallback((user, password) => {
-        
-        let inputObj={"Username": user, "Password": password}
+    const signIn = useCallback( async (signInData) => {
+        console.log('signInData: ', signInData);
+        let response = await signInApi(signInData);
+        return response
+    })
 
-    const token = fetch("http://localhost:21658/api/users/login",{
-        method: 'POST',
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(inputObj)
-    }).then((res=>{
-        return res.json();
-    })).then((resp=>{
-        setJWT(resp.Data.Token);
-    }))
-    }, [setJWT])
-    
+    const login = useCallback((loginData) => {
+        console.log('loginData: ', loginData);
+
+        loginApi(loginData)
+            .then(res => setJWT(res.data))
+            .catch(e => console.log(e))
+    })
+
+    const verifyToken = useCallback((header) => {
+        return verifyTokenApi(header);
+    })
+
     const logout = useCallback(() => {
         setJWT(null);
-    }, [setJWT])
-    
-    return(
+    })
+
+    return (
         {
             isLogged: Boolean(jwt),
+            signIn,
             login,
+            verifyToken,
             logout,
             jwt
         }
