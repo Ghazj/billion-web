@@ -1,7 +1,7 @@
 import useUser from '../../hooks/useUser';
 import Chart1 from '../../components/charts/chart1';
 import { useNavigate } from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Employee } from '../../services/Employee';
 
 import { ReactComponent as Favorite } from '../../assets/icons/favorite.svg';
@@ -11,11 +11,8 @@ import { ReactComponent as Timer } from '../../assets/icons/timer.svg';
 import { ReactComponent as Pack } from '../../assets/Illustrations/pack-graphics.svg';
 
 import './customerDashboard.css'
-import { ColorType } from 'lightweight-charts';
 
 function CustomerDashboard() {
-    const { percent, setPercent } = useState(null);
-    const { percentClass, setPercentClass } = useState('');
     const { isLogged, logout, jwt, verifyToken } = useUser();
     const navigate = useNavigate();
 
