@@ -1,0 +1,155 @@
+header{
+    background-color: #ffffff;
+}
+
+header h1{
+    color: rgb(64, 144, 213);
+    padding: 0 3vw 0 3vw;
+}
+
+header p {
+    font-size: large;
+    padding: 0 3vw 3vh 3vw;
+}
+
+strong {
+    font-size: large;
+    padding-left: 5%;
+}
+
+.customerDashboard {}
+
+.section {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    padding: 10px;
+}
+
+.block {
+    display: grid;
+    grid-template-columns: 45vw 45vw;
+    gap: 10px;
+    padding: 10px;
+    justify-content: center;
+    position: relative;
+}
+
+.itemContainer {}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    background-color: #ffffff;
+    width: 45vw;
+    height: auto;
+    aspect-ratio: 1;
+    font-size: 3.5vw;
+    text-align: left;
+    align-items: flex-start;
+}
+
+.icon {
+    display: flex;
+    justify-self: flex-start;
+    width: 33%;
+    height: auto;
+    aspect-ratio: 1;
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: blueviolet;
+    border-radius: 10vw;
+    padding: 0.5vw;
+}
+
+.icon-engagement {
+    display: flex;
+    justify-self: flex-start;
+    width: 33%;
+    height: auto;
+    aspect-ratio: 1;
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: rgb(222, 28, 64);
+    border-radius: 10vw;
+    padding: 0.5vw;
+}
+
+.icon-growth {
+    display: flex;
+    justify-self: flex-start;
+    width: 33%;
+    height: auto;
+    aspect-ratio: 1;
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: rgb(43, 168, 226);
+    border-radius: 10vw;
+    padding: 0.5vw;
+}
+
+.icon-lastMonth {
+    display: flex;
+    justify-self: flex-start;
+    width: 33%;
+    height: auto;
+    aspect-ratio: 1;
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: rgb(146, 68, 219);
+    border-radius: 10vw;
+    padding: 0.5vw;
+}
+
+.icon-duration {
+    display: flex;
+    justify-self: flex-start;
+    width: 33%;
+    height: auto;
+    aspect-ratio: 1;
+    margin-top: 5%;
+    margin-left: 5%;
+    background-color: rgb(78, 220, 81);
+    border-radius: 10vw;
+    padding: 0.5vw;
+}
+
+.pack-title{
+    padding-top: 10%;
+}
+
+.pack-illustration{
+    display: flex;
+    position: absolute;
+    width: 50%;
+    top: 20%;
+    right: 50%;
+}
+
+.currentGrowth-text{
+    color: rgb(0, 214, 0);
+    margin-top: 10%;
+}
+
+.toFinish-text{
+    color: rgb(255, 0, 0);
+}
+
+.textValue {
+    font-size: 7vw;
+}
+
+.percent{
+    font-size: 5vw;
+}
+
+.equal{
+    color: rgb(124, 124, 124);
+}
+
+.positive{
+    color: rgb(0, 255, 0);
+}
+
+.negative{
+    color: rgb(255, 0, 0);
+}
